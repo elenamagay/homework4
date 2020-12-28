@@ -13,6 +13,6 @@ https://elenamagay.github.io/homework4/
 
 
 #### Languages
-<!-- ![Image of HTML badge](https://img.shields.io/badge/HTML-23%25-orange) 
+![Image of HTML badge](https://img.shields.io/badge/HTML-23%25-orange) 
 ![Image of CSS badge](https://img.shields.io/badge/CSS-12%25-purple)
-![Image of JavaScript badge](https://img.shields.io/badge/JavaScript-65%25-yellow) -->
+![Image of JavaScript badge](https://img.shields.io/badge/JavaScript-65%25-yellow)
