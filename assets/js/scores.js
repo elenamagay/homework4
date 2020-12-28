@@ -1,5 +1,8 @@
 // either get scores from localstorage or set to empty array
 var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+var newHighscore = JSON.parse(window.localStorage.getItem("newScore"));
+
+highscores.push(newHighscore);
 
 // sort highscores by score property in descending order
 highscores.sort(function(a, b) {
@@ -9,7 +12,7 @@ highscores.sort(function(a, b) {
 highscores.forEach(function(score) {
   // create li tag for each high score
   var liTag = document.createElement("li");
-  liTag.textContent = score.initials + " - " + score.score;
+  liTag.textContent = score.newInitials + " - " + score.score;
 
   // display on page
   var olEl = document.getElementById("highscores");
@@ -18,5 +21,6 @@ highscores.forEach(function(score) {
 
 document.getElementById("clear").addEventListener("click", function() {
   window.localStorage.removeItem("highscores");
-  window.location.reload();
+  var highscores = document.getElementById("highscores");
+  highscores.remove();
 });

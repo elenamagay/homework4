@@ -29,12 +29,6 @@ function startQuiz() {
   timerId = setInterval(function() {
     time--;
     timerEl.textContent = time;
-
-    // if(time === 0) {
-    //   clearInterval(timerId);
-    //   quizEnd();                  
-    // }
-
   }, 1000);
 
   getQuestion();
@@ -130,32 +124,38 @@ function clockTick() {
   }
 }
 
-function saveHighscore(event) {
+function saveHighscore() {
   // get value of input box
   var newInitials = initialsEl.value;
 
-  if (newInitials.length === "" || newInitials.length > 3) {
+  if (newInitials.length !== " " && newInitials.length > 3) {
+    feedbackEl.textContent = "Error initials cannot be blank or longer than 3 characters";
+    feedbackEl.setAttribute("class", "feedback");
+    setTimeout(function() {
+      feedbackEl.setAttribute("class", "feedback hide");
+    }, 1000);
+
     return
-  } else {
+  }
   var newScore = {
     score: score,
-    initials: initialsEl
+    newInitials: newInitials
   };
+
   // save to local storage
-  localStorage.setItem("newScore", JSON.stringify(newScore))
+  localStorage.setItem("newScore", JSON.stringify(newScore));
   // redirect to a highscore page
     window.location.href = "highscores.html"
   
 };
-  
-};
+
 
 function checkForEnter(event) {
   // "13" represents the enter key
   if (event.key === "enter") {
     event.preventDefault();
     submitBtn.click();
-    
+    saveHighscore();
   }
 };
 
@@ -165,4 +165,4 @@ submitBtn.addEventListener("click", saveHighscore);
 // user clicks button to start quiz
 startBtn.addEventListener("click", startQuiz);
 
-initialsEl.addEventListener("keyup", checkForEnter);
+initials.addEventListener("keyup", checkForEnter);
