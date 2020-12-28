@@ -112,7 +112,8 @@ function quizEnd() {
   clearInterval(time);
   // show end screen
   endScreen.style.display = "block";
-  
+  // show final score
+  finalScore.innerText = score;
   // hide questions section
   questionsEl.style.display = "none";
   questionsEl.setAttribute("class", "hide");
